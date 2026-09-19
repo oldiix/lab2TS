@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+*.log
+npm-debug.log*
+.idea/
+.vscode/
+.env
+.env.local
+vite-branch/
+lab-app/
