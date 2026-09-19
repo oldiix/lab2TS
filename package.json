@@ -4,16 +4,17 @@
   "description": "Клієнтський застосунок управління бібліотекою (TypeScript + Webpack + Bootstrap)",
   "private": true,
   "scripts": {
-    "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production",
+    "start": "vite --port 9000",
+    "build": "vite build",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
-    "lint:fix": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" --fix",
+    "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"vite.config.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"vite.config.ts\" --fix",
     "format": "prettier --write \"src/**/*.{ts,scss}\" \"tests/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.{ts,scss}\" \"tests/**/*.ts\"",
     "test": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha",
     "deploy": "npm run build && gh-pages -d dist",
-    "prepare": "husky"
+    "prepare": "husky",
+    "preview": "vite preview --port 9000"
   },
   "keywords": [
     "typescript",
@@ -36,24 +37,16 @@
     "@typescript-eslint/parser": "^7.18.0",
     "chai": "^4.4.1",
     "cross-env": "^7.0.3",
-    "css-loader": "^7.1.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "gh-pages": "^6.1.1",
-    "html-webpack-plugin": "^5.6.0",
     "husky": "^9.1.4",
-    "mini-css-extract-plugin": "^2.9.0",
     "mocha": "^10.7.0",
     "prettier": "^3.3.3",
     "sass": "^1.77.8",
-    "sass-loader": "^16.0.0",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
-    "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "vite": "^5.4.0"
   }
 }
