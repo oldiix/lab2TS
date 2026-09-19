@@ -1,0 +1,73 @@
+// Bootstrap підключається як npm-залежність через бандлер,
+// а не CDN-посиланням у index.html (вимога п.4 практичної частини).
+//
+// Імпортуються лише ті частини, які реально використовує застосунок:
+// повний `bootstrap.scss` дає ~229 KiB CSS, вибірковий набір — приблизно
+// вдвічі менше. Решта компонентів (carousel, accordion, offcanvas,
+// dropdown, navbar…) у цьому проєкті не використовуються.
+//
+// Використано саме @import, а не @use: у Bootstrap 5.3 партіали
+// покладаються на @import-семантику (спільні змінні та міксини),
+// і офіційна документація описує вибіркове підключення так само.
+
+// 1. Обов'язкова база: функції, змінні, мапи, міксини, utility-API.
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+// 2. Базові шари.
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+
+// 3. Використані компоненти.
+@import 'bootstrap/scss/forms';
+@import 'bootstrap/scss/buttons';
+@import 'bootstrap/scss/card';
+@import 'bootstrap/scss/badge';
+@import 'bootstrap/scss/list-group';
+@import 'bootstrap/scss/close';
+@import 'bootstrap/scss/modal';
+@import 'bootstrap/scss/toasts';
+@import 'bootstrap/scss/pagination';
+
+// 4. Хелпери та генератор utility-класів (d-flex, gap-*, text-bg-* тощо).
+@import 'bootstrap/scss/helpers';
+@import 'bootstrap/scss/utilities/api';
+
+:root {
+  --app-max-width: 900px;
+}
+
+body {
+  background-color: #eceff1;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: var(--app-max-width);
+}
+
+.card-title {
+  font-size: 1.05rem;
+}
+
+// Рядки списків: кнопки не «стрибають» при появі бейджа позиченої книги.
+.list-group-item {
+  padding-inline: 0;
+
+  .btn-sm {
+    white-space: nowrap;
+  }
+}
+
+// Поле з помилкою підсвічується без зміни висоти рядка.
+.form-control.is-invalid {
+  background-image: none;
+  padding-right: 0.75rem;
+}
